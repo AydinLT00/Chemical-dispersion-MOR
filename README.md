@@ -88,8 +88,8 @@ The notebook also uses the custom `dlroms` library provided by the course instru
 ### Instructions
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-    cd YOUR_REPO
+    git clone https://github.com/AydinLT00/Chemical-dispersion-MOR.git
+    cd Chemical-dispersion-MOR
     ```
 
 2.  **Install FEniCS:**
