@@ -16,7 +16,7 @@ We implement a **POD-Galerkin Reduced Order Model (ROM)** to create a high-fidel
 ### Optimization of Chemical Flow
 The main achievement of this project is the successful use of the ROM to solve an optimization problem. The goal was to find the optimal inflow angle $\theta$ that minimizes the amount of chemical delivered to the *bottom* exit gate, ensuring most of it goes to the top one. The ROM's prediction aligns remarkably well with the FOM, but is computed in a fraction of the time.
 
-![ROM vs FOM Optimization](https://i.imgur.com/GgGv3qR.png)
+![ROM vs FOM Optimization](media/compareJ.png)
 *<p align="center">Figure: The ROM accurately predicts the optimal angle θ that minimizes the bottom outflow J, closely matching the expensive FOM-based optimization.</p>*
 
 ### Performance and Speed-Up
@@ -30,8 +30,10 @@ The implemented ROM provides a massive computational speed-up while maintaining 
 ### High-Fidelity Solution Reconstruction
 The ROM can accurately reconstruct the high-dimensional concentration field at various time steps.
 
-![FOM vs ROM Comparison](https://i.imgur.com/8QO9fQJ.png)
-*<p align="center">Figure: Visual comparison of the FOM solution (top), the ROM approximation (middle), and the difference (bottom) at different time instances.</p>*
+![FOM vs ROM Comparison](media/FOM.png)
+![FOM vs ROM Comparison](media/FOM-RB_compare.png)
+![FOM vs ROM Comparison](media/diff.png)
+*<p align="center">Figure: Visual comparison of the FOM solution (top), the ROM approximation (middle), and the difference (bottom) at certain time instances.</p>*
 
 ---
 
@@ -60,7 +62,7 @@ This *offline/online decomposition* is key to the efficiency of the ROM, as the 
 #### B. Proper Orthogonal Decomposition (POD)
 We generate a dataset of 20 FOM simulations. From the resulting snapshots, we use **Singular Value Decomposition (SVD)** to extract an optimal, low-dimensional basis (POD modes) that can represent the solution space. The rapid decay of the singular values indicates that a small number of modes (**113 modes**) are sufficient to capture over 99.999% of the system's energy.
 
-![Singular Value Decay](https://i.imgur.com/yGjF1jV.png)
+![Singular Value Decay](media/decay.png)
 *<p align="center">Figure: The fast decay of singular values confirms the system's suitability for model reduction.</p>*
 
 #### C. Galerkin Projection
@@ -69,7 +71,7 @@ The governing PDE is projected onto the reduced basis space spanned by the POD m
 ### 3. Model Validation
 The ROM's accuracy was rigorously tested against the FOM on a separate test set. The model shows excellent performance, with an average relative error of less than 1%.
 
-![Error Quantiles](https://i.imgur.com/lJ4iK5E.png)
+![Error Quantiles](media/quantile.png)
 *<p align="center">Figure: The distribution of relative errors over time for the 10 test simulations. The median error remains low, and the quantiles show a tight error spread.</p>*
 
 ---
