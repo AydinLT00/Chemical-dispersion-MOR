@@ -45,8 +45,9 @@ The system models the concentration $u$ of a chemical in a 2D dispenser. The pro
 2.  **Advection-Diffusion Equation:** The velocity field **b** is then used to model the transport of the chemical concentration $u$ over time.
 
 The core equation for the chemical concentration is:
+
 $$
-\frac{\partial u}{\partial t} - \frac{1}{2} \Delta u + \mathbf{b}(\boldsymbol{\mu}) \cdot \nabla u = 0
+\frac{\partial u}{\partial t} - \frac{1}{2} \Delta u + \mathbf{b}({\mu}) \cdot \nabla u = 0 
 $$
 
 ### 2. The Reduced Order Model (ROM): POD-Galerkin
@@ -54,9 +55,11 @@ To accelerate the simulations, we built a ROM using the POD-Galerkin methodology
 
 #### A. Problem Reformulation & Linear Superposition
 The problem is first transformed into a homogeneous form ($u_{hom} = u - 1$). Crucially, since the Stokes' equations are linear, the velocity field **b** can be expressed as a linear combination of pre-computed basis solutions:
+
 $$
-\mathbf{b}(\boldsymbol{\mu}) = c_1\mathbf{b_1} + c_2\mathbf{b_2} + c_3\mathbf{b_3}
+\mathbf{b}({\mu}) = c_1\mathbf{b_1} + c_2\mathbf{b_2} + c_3\mathbf{b_3}
 $$
+
 This *offline/online decomposition* is key to the efficiency of the ROM, as the expensive step of solving for the flow field is done only once during the offline phase.
 
 #### B. Proper Orthogonal Decomposition (POD)
